@@ -1,0 +1,12 @@
+[package]
+name = "datasquid_protocol"
+version = "0.1.0"
+authors = ["Laurent Belmonte <laurent.belmonte@gmail.com>"]
+
+[dependencies]
+protobuf= "1.*"
+grpc="0.2.1"
+tls-api         = "0.*"
+
+[build-dependencies]
+protoc-rust-grpc = "0.2.1"

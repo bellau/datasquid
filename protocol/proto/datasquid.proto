@@ -1,0 +1,68 @@
+
+
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "org.datasquid.protocol";
+option java_outer_classname = "DataSquidProtocol";
+
+package org.datasquid.protocol;
+
+
+message Collection {
+    uint32 id = 1;
+    string name = 2;
+    map<string, string> properties = 3;
+}
+
+
+message MessageHeader {
+    string name = 1;
+    string value = 2;
+}
+
+message MessageMimePart {
+  repeated MessageHeader headers = 1;
+  bytes  data = 2;
+  repeated MessageMimePart children = 3;
+}
+
+message Message {
+  string uid = 1;
+  repeated MessageHeader headers = 2;
+  MessageMimePart body = 3;
+}
+
+service Messages {
+  rpc Put(PutRequest) returns (PutResponse) {}
+
+  // collections
+  rpc ListCollections(ListCollectionsRequest) returns (ListCollectionsResponse) {}
+  rpc CreateCollection(CreateCollectionRequest) returns (CreateCollectionResponse) {}
+}
+
+message CreateCollectionRequest {
+    string name = 1;
+    map<string, string> properties = 2;
+}
+
+message CreateCollectionResponse {
+    Collection collection = 1;
+}
+
+message ListCollectionsRequest {
+
+}
+
+message ListCollectionsResponse {
+    repeated Collection collections = 1;
+}
+
+message PutRequest {
+  repeated uint32 collections = 1;
+  Message msg = 2;
+}
+
+message PutResponse {
+
+}

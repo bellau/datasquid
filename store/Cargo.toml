@@ -1,0 +1,11 @@
+[package]
+name = "datasquid_store"
+version = "0.1.0"
+authors = ["Laurent Belmonte <laurent.belmonte@gmail.com>"]
+
+[dependencies]
+rocksdb= "0.10.0"
+byteorder="1"
+futures-executor = "0.2.0-beta"
+futures="0.2.0-beta"
+roaring="0.5.2"

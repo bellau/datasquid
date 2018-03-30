@@ -1,0 +1,6 @@
+[workspace]
+members = [ 
+	"store",
+	"protocol",
+	"server",
+]
